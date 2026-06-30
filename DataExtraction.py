@@ -15,7 +15,7 @@ STATES = [
 
 #Fred series ID categories:
 minwage_id = "STTMINWG{st}"       
-employment_id = "{st}LEIH"      #leisure and hosp. jobs
+employment_id = "{st}LEIH"      #leisure and hosp. jobs only
 federal_id = "FEDMINNFRWG"   
 
 start_year = 2000
@@ -130,13 +130,13 @@ def main():
 
     full = full.merge(federal, on=["year"], how = "left")
 
-    full = full.sort_values(["state","year"]).reset_index(drop=True)          #orders by state then year, resets index
+    full = full.sort_values(["state","year"]).reset_index(drop=True)         
 
     
     
     
     
-    #make the table nice by adding useful columns:
+    #columns we will need:
     
     
     
@@ -153,7 +153,7 @@ def main():
     full["minwage_change"] = full.groupby("state")["eff_min_wage"].diff()         #change in min wage each yar by state
 
 
-    #SAVE AS CSV!!!!
+   
 
     full.to_csv("minwage_employment_data.csv", index= False)
 

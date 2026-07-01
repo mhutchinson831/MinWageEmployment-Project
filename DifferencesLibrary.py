@@ -1,7 +1,10 @@
 import pandas as pd
 import differences
+from pathlib import Path
 
-df = pd.read_csv(r"C:\Users\mhutchinson\minwage_employment_data.csv")
+
+DATA_PATH = Path(__file__).resolve().parent / "minwage_employment_data.csv"
+df = pd.read_csv(DATA_PATH)
 df.dropna(subset=["log_employment", "eff_min_wage","federal_min_wage"])
 
 treated_diff = 0.01

@@ -2,7 +2,10 @@ import pandas as pd
 import numpy as np
 import statsmodels.formula.api as smf
 
-df = pd.read_csv(r"C:\Users\mhutchinson\minwage_employment_data.csv")
+from pathlib import Path
+
+DATA_PATH = Path(__file__).resolve().parent / "minwage_employment_data.csv"
+df = pd.read_csv(DATA_PATH)
 
 
 #get rid of rows with missing important values
